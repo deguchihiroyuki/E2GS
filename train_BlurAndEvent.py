@@ -101,8 +101,6 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         # Pick a random Camera
         if not viewpoint_stack:
             viewpoint_stack = scene.getTrainCameras().copy()
-        # print("len(viewpoint_stack)")
-        # print(len(viewpoint_stack))
         viewpoint_cam = viewpoint_stack.pop(randint(0, len(viewpoint_stack)-1))#Camera()
 
         # Render
@@ -132,12 +130,6 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         # Loss
         gt_image = viewpoint_cam.original_image.cuda()
         image = torch.mean(torch.stack(image_list), dim=0)
-        # if iteration % 1000 == 0:
-        #     img = image.to("cpu")
-        #     t = img.detach().numpy()
-        #     t = t.transpose(1,2,0)
-        #     t = Image.fromarray((t*255).astype('uint8'))
-        #     t.save(r'G:\ssd1\\GaussianSplatting_forblur\SIBR_viewers\\o\\{}.png'.format(iteration), format='PNG')
         Ll1 = l1_loss(image, gt_image)
         loss_img = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image))
         loss = loss_img + event_loss
