@@ -1,7 +1,7 @@
 E2GS License  
 ===========================  
 
-**Hiroyuki Deguchi** and **Keio University** hold all the ownership rights on the *Software* named **E2GS**.  
+**Keio University** hold all the ownership rights on the *Software* named **E2GS**.  
 The *Software* is in the process of being registered with the Agence pour la Protection des  
 Programmes (APP).  
 
