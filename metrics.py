@@ -26,8 +26,10 @@ def readImages(renders_dir, gt_dir):
     gts = []
     image_names = []
     for fname in os.listdir(renders_dir):
-        render = Image.open(renders_dir / fname)
-        gt = Image.open(gt_dir / fname)
+        render = renders_dir/fname
+        gt = os.path.join(gt_dir, fname)
+        render = Image.open(render)
+        gt = Image.open(gt)
         renders.append(tf.to_tensor(render).unsqueeze(0)[:, :3, :, :].cuda())
         gts.append(tf.to_tensor(gt).unsqueeze(0)[:, :3, :, :].cuda())
         image_names.append(fname)
@@ -60,13 +62,14 @@ def evaluate(model_paths):
                 per_view_dict_polytopeonly[scene_dir][method] = {}
 
                 method_dir = test_dir / method
-                gt_dir = method_dir/ "gt"
-                renders_dir = method_dir / "renders"
-                renders, gts, image_names = readImages(renders_dir, gt_dir)
-
+                ideal_images_dir = "G:\ssd1\GaussianSplatting_forblur\ideal_data_for_metrics\\chair_novel"
+                renders_dir = method_dir / "renders_novel"
+                renders, gts, image_names = readImages(renders_dir, ideal_images_dir)
                 ssims = []
                 psnrs = []
                 lpipss = []
+                print(len(renders))
+                print(len(gts))
 
                 for idx in tqdm(range(len(renders)), desc="Metric evaluation progress"):
                     ssims.append(ssim(renders[idx], gts[idx]))
