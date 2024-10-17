@@ -24,6 +24,10 @@ Data Structere is like below.
   
 ```
 As for the realworld data, we have to deblur the blured image using [EDI](https://github.com/panpanfei/Bringing-a-Blurry-Frame-Alive-at-High-Frame-Rate-with-an-Event-Camera) model and estimate 5 camera poses in exposure time per image.
+
+The data I have processed can be downloaded from the following link.
+[Download the input data](https://keio.box.com/s/8mvtjcfj2ekc0z0d9l71xcf20thdl143)
+(images_d in each directory is a directory which contains images deblurred by [EDI](https://github.com/panpanfei/Bringing-a-Blurry-Frame-Alive-at-High-Frame-Rate-with-an-Event-Camera) model.)
 ### Running
 
 To run the optimizer, simply use
