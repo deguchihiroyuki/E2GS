@@ -319,7 +319,7 @@ def readBlurNerfSyntheticInfo(path, white_background, eval, extension=".png"):
     # print(a)
     #R, Tのサイズ(5,3,3),(5,3)
     if not eval:
-        train_cam_infos.extend(test_cam_infos)
+        # train_cam_infos.extend(test_cam_infos)
         test_cam_infos = []
     
     nerf_normalization = getNerfppNorm_N(train_cam_infos)
@@ -379,7 +379,7 @@ def readColmapSceneAndNerfSyntheticInfo(path, white_background, eval, extension=
     print("Reading Test Transforms")
     test_cam_infos = read1CamerasFromTransforms(path, "transform_test.json", white_background, extension)
     if not eval:
-        train_cam_infos.extend(test_cam_infos)
+        # train_cam_infos.extend(test_cam_infos)
         test_cam_infos = []
     
     nerf_normalization = getNerfppNorm(train_cam_infos)
@@ -453,7 +453,7 @@ def readColmapSceneAndNerfSyntheticInfo_novel(path, white_background, eval, exte
     print("Reading Test Transforms")
     test_cam_infos = read1CamerasFromTransforms_novel(path, "transform_test.json", white_background, extension)
     if not eval:
-        train_cam_infos.extend(test_cam_infos)
+        # train_cam_infos.extend(test_cam_infos)
         test_cam_infos = []
     
     nerf_normalization = getNerfppNorm(train_cam_infos)
