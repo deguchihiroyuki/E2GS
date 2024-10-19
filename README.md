@@ -115,10 +115,13 @@ python train.py -s <path to COLMAP or NeRF Synthetic dataset>
 </details>
 
 ### Evaluation
-By default, the trained models use all available images in the dataset. To train them while withholding a test set for evaluation, use the ```--eval``` flag. This way, you can render training/test sets and produce error metrics as follows:
+By default, the trained models use all available images in the dataset. **To train them while withholding a test set for evaluation, use the ```--eval``` flag**. This way, you can render training/test sets as follows:
 ```shell
 python render.py -m <path to trained model> --eval # Generate input view renderings
 python render_novel.py -m <path to trained model> --eval # Generate novel view renderings
+```
+If you put the GT clear images, you can compute the metrics error as follows:
+```shell
 python metrics.py -m <path to trained model> # Compute error metrics on renderings
 ```
 ## Citation  
